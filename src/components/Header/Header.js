@@ -24,7 +24,7 @@ const Header = ({ openSearch, setOpenSearch }) => {
                <div
                   className={`${
                      openMenu ? 'h-[200px]' : 'h-0'
-                  } bg-[#2e51a2] absolute top-[64px] left-0 px-5 flex items-center justify-start w-full z-9999 overflow-hidden transition-all md:relative md:top-[unset] md:overflow-visible`}
+                  } bg-[#0a1f49] absolute top-[64px] left-0 px-5 flex items-center justify-start w-full z-9999 overflow-hidden transition-all md:relative md:top-[unset] md:overflow-visible`}
                >
                   <ul className="grid grid-cols-1 items-center gap-y-3 md:grid-cols-4">
                      {listItem.map((list, index) => (
