@@ -7,17 +7,19 @@ import Search from '../../components/Search/Search';
 import {
    fetchAsyncAnime,
    selectedAnime,
-   getAllTopAnime,
-   getAllTopManga,
-   getAllTopCharacters,
    getSearchAnime,
-   getAllTopPeople,
+   removeSelectedAnime,
+   season,
+   fetchAsyncAnimeSeason,
+   recommendedAnime,
+   fetchAsyncRecommendedAnime,
 } from '../../features/animes/animeSlice';
 import useFetchSearch from '../../components/Search/useFetchSearch';
 import SearchResults from '../../components/Search/SearchResults';
 import Header from '../../components/Header/Header';
 import Row from '../../components/Row/Row';
 import { settings } from '../../helper';
+import EntryRow from '../../components/Row/EntryRow';
 
 const Anime = () => {
    const { id } = useParams();
@@ -25,18 +27,20 @@ const Anime = () => {
    const { onHandleSubmit, setSearchTerm, searchTerm, isSearching, error } =
       useFetchSearch();
    const anime = useSelector(selectedAnime);
-   const topAnime = useSelector(getAllTopAnime);
-   const topManga = useSelector(getAllTopManga);
-   const topPeople = useSelector(getAllTopPeople);
-   const topCharacters = useSelector(getAllTopCharacters);
+   const seasonAnime = useSelector(season);
+   const recommended = useSelector(recommendedAnime);
    const searchResultData = useSelector(getSearchAnime);
    const dispatch = useDispatch();
 
    useEffect(() => {
-      if (!id || !anime) return;
+      if (!id) return;
 
       dispatch(fetchAsyncAnime(id));
-   }, [id, dispatch, anime]);
+      dispatch(fetchAsyncAnimeSeason());
+      dispatch(fetchAsyncRecommendedAnime(id));
+
+      return () => dispatch(removeSelectedAnime());
+   }, [id, dispatch]);
 
    return (
       <>
@@ -58,30 +62,17 @@ const Anime = () => {
                   ) : (
                      <>
                         <Info data={anime} />
-
-                        <Row
-                           data={topAnime}
+                        <EntryRow
+                           data={recommended}
                            settings={settings}
                            type="anime"
-                           title="Top Anime"
+                           title="Recommended Anime"
                         />
                         <Row
-                           data={topManga}
+                           data={seasonAnime}
                            settings={settings}
-                           type="manga"
-                           title="Top Manga"
-                        />
-                        <Row
-                           data={topCharacters}
-                           settings={settings}
-                           type="manga"
-                           title="Most Favorited Characters"
-                        />
-                        <Row
-                           data={topPeople}
-                           settings={settings}
-                           type="manga"
-                           title="Most Favorited People"
+                           type="anime"
+                           title="Season Now"
                         />
                      </>
                   )}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../components/Header/Header';
 import Search from '../../components/Search/Search';
@@ -11,6 +11,7 @@ import {
    fetchAsyncTopManga,
    fetchAsyncTopCharacter,
    fetchAsyncTopPeople,
+   removeState,
 } from '../../features/animes/animeSlice';
 import { settings } from '../../helper';
 import {
@@ -22,7 +23,6 @@ import {
 } from '../../features/animes/animeSlice';
 
 const Home = () => {
-   const [pages] = useState(1);
    const { onHandleSubmit, setSearchTerm, searchTerm, isSearching, error } =
       useFetchSearch();
    const dispatch = useDispatch();
@@ -35,7 +35,7 @@ const Home = () => {
 
    console.log(topPeople);
    useEffect(() => {
-      dispatch(fetchAsyncTopAnime(pages));
+      dispatch(fetchAsyncTopAnime(1));
       dispatch(fetchAsyncTopManga());
 
       const timerId = setTimeout(() => {
@@ -43,8 +43,11 @@ const Home = () => {
          dispatch(fetchAsyncTopCharacter());
       }, 2000);
 
-      return () => clearTimeout(timerId);
-   }, [dispatch, pages]);
+      return () => {
+         clearTimeout(timerId);
+         dispatch(removeState());
+      };
+   }, [dispatch]);
 
    return (
       <>

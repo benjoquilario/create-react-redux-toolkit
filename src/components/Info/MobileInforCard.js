@@ -89,8 +89,8 @@ const MobileInforCard = ({ data }) => {
                                        {data.data.type}
                                     </span>
                                     <div className="text-white flex gap-1">
-                                       {data.data.genres.map(genre => (
-                                          <span>{genre.name}</span>
+                                       {data.data.genres.map((genre, index) => (
+                                          <span key={index}>{genre.name}</span>
                                        ))}
                                     </div>
                                  </div>

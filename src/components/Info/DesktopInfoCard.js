@@ -1,5 +1,4 @@
 import React from 'react';
-import Search from '../Search/Search';
 import bg from '../../assets/images/bg.webp';
 
 const DesktopInfoCard = ({ data }) => {
@@ -14,13 +13,14 @@ const DesktopInfoCard = ({ data }) => {
                   backgroundImage: `linear-gradient(to right, rgba(10, 31, 73, 0.8) 0%, rgba(10, 31, 73, 0.8) 100%), url(${bg})`,
                }}
             >
-               <section className="flex-nowrap flex flex-col md:flex-row items-center">
+               <section className="h-auto flex-nowrap flex flex-col md:flex-row items-center">
                   <div className="md:h-auto h-full w-full min-w-full md:min-w-[300px] md:w-[300px] overflow-hidden">
                      <div className="block h-full w-full min-w-full md:min-w-[300px] md:w-[300px] md:h-[450px] relative">
                         <div className="w-full h-full min-w-full">
                            <img
                               className="object-cover block w-full min-w-full h-full min-h-full"
                               src={data.data.images.jpg.image_url}
+                              alt={data.data.title}
                            />
                         </div>
                      </div>
@@ -36,11 +36,11 @@ const DesktopInfoCard = ({ data }) => {
                                  {data.data.type}
                               </span>
                               <div className="text-white flex gap-1">
-                                 {data.data.genres.map(genre => (
-                                    <span>{genre.name}</span>
+                                 {data.data.genres.map((genre, index) => (
+                                    <span key={index}>{genre.name}</span>
                                  ))}
                               </div>
-                              <span className='relative pl-[20px] before:content-["\2022"] before:w-full before:h-full before:absolute before:top-0 before:left-[7px] before:inline-flex before:content-center before:items-center text-white'>
+                              <span className='relative pl-[20px] before:content-["\u2022"] before:w-full before:h-full before:absolute before:top-0 before:left-[7px] before:inline-flex before:content-center before:items-center text-white'>
                                  {data.data.episodes}EP
                               </span>
                            </div>
