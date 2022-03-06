@@ -33,20 +33,25 @@ const Home = () => {
    const topCharacters = useSelector(getAllTopCharacters);
    const searchResultData = useSelector(getSearchAnime);
 
-   console.log(topPeople);
    useEffect(() => {
-      dispatch(fetchAsyncTopAnime(1));
-      dispatch(fetchAsyncTopManga());
+      let isSubscribed = true;
 
-      const timerId = setTimeout(() => {
-         dispatch(fetchAsyncTopPeople());
-         dispatch(fetchAsyncTopCharacter());
-      }, 2000);
+      if (isSubscribed) {
+         dispatch(fetchAsyncTopAnime(1));
+         dispatch(fetchAsyncTopManga());
 
-      return () => {
-         clearTimeout(timerId);
-         dispatch(removeState());
-      };
+         const timerId = setTimeout(() => {
+            dispatch(fetchAsyncTopPeople());
+            dispatch(fetchAsyncTopCharacter());
+         }, 2000);
+
+         return () => {
+            clearTimeout(timerId);
+            dispatch(removeState());
+         };
+      }
+
+      return () => (isSubscribed = false);
    }, [dispatch]);
 
    return (

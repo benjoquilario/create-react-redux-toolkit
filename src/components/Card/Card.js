@@ -7,8 +7,8 @@ const Card = ({ data, type }) => {
 
    return (
       <div className="relative w-[150px] min-w-[150px] overflow-visible flex flex-wrap rounded-[6px] content-start margin-left">
-         <div className="overflow-hidden w-full rounded-[6px] h-[225px]">
-            <div className="relative w-full h-full">
+         <div className="overflow-hidden w-full rounded-[6px] h-[225px] ">
+            <div className="relative w-full h-full hover:opacity-80 transition-opacity">
                <Link
                   to={`/${type}/${mal_id ? mal_id : data.entry.mal_id}`}
                   className="inline-block w-full h-full"
@@ -37,7 +37,7 @@ const Card = ({ data, type }) => {
                   </div>
                </div>
             </div>
-            <h2 className="">
+            <h2 className="text-[#032541]">
                <Link to={`/${type}/${mal_id}`} className="webkit-box">
                   {title ? title : name}
                </Link>

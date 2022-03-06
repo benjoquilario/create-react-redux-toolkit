@@ -64,7 +64,11 @@ const MobileInforCard = ({ data }) => {
                                  <div className="w-[1px] h-[24px] inline-flex border-solid border-r border-slate-50"></div>
                                  <div className="inline-flex items-center overflow-hidden">
                                     <a
-                                       href={data.data.trailer.embed_url}
+                                       href={
+                                          data.data.trailer
+                                             ? data.data.trailer.embed_url
+                                             : '/'
+                                       }
                                        className="flex items-center gap-2"
                                     >
                                        <svg

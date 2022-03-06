@@ -4,12 +4,15 @@ import axios from '../../apis/axios';
 const initialState = {
    topAnime: {},
    selectedAnime: {},
+   selectedManga: {},
    topManga: {},
    topCharacters: {},
    topPeople: {},
    searchAnime: {},
+   searchManga: {},
    season: {},
    recommendedAnime: {},
+   recommendedManga: {},
 };
 
 export const fetchAsyncTopAnime = createAsyncThunk(
@@ -34,10 +37,31 @@ export const fetchAsyncAnime = createAsyncThunk(
    }
 );
 
+export const fetchAsyncManga = createAsyncThunk(
+   '/manga/fetchAsycnManga',
+   async id => {
+      const response = await axios.get(`/manga/${id}`);
+
+      return response.data;
+   }
+);
+
 export const fetchAsycnSearchAnime = createAsyncThunk(
    'anime/fetchAsyncSearchAnime',
    async name => {
       const response = await axios.get('/anime', {
+         params: {
+            q: name,
+         },
+      });
+      return response.data;
+   }
+);
+
+export const fetchAsycnSearchManga = createAsyncThunk(
+   'manga/fetchAsyncSearchManga',
+   async name => {
+      const response = await axios.get('/manga', {
          params: {
             q: name,
          },
@@ -83,9 +107,18 @@ export const fetchAsyncAnimeSeason = createAsyncThunk(
 );
 
 export const fetchAsyncRecommendedAnime = createAsyncThunk(
-   '/season/fetchAsyncRecommendedAnime',
+   '/recommended/fetchAsyncRecommendedAnime',
    async id => {
       const response = await axios.get(`anime/${id}/recommendations`);
+
+      return response.data;
+   }
+);
+
+export const fetchAsyncRecommendedManga = createAsyncThunk(
+   '/recommended/fetchAsyncRecommendedManga',
+   async id => {
+      const response = await axios.get(`manga/${id}/recommendations`);
 
       return response.data;
    }
@@ -95,17 +128,18 @@ const animeSlice = createSlice({
    name: 'animes',
    initialState,
    reducers: {
-      removeSelectedAnime: state => {
-         state.selectedAnime = {};
-      },
-
       removeState: state => {
          state.topAnime = {};
          state.selectedAnime = {};
+         state.selectedManga = {};
+         state.searchManga = {};
+         state.season = {};
          state.topManga = {};
          state.topCharacters = {};
          state.topPeople = {};
          state.searchAnime = {};
+         state.recommendedAnime = {};
+         state.recommendedManga = {};
       },
    },
    extraReducers(builder) {
@@ -115,6 +149,10 @@ const animeSlice = createSlice({
 
       builder.addCase(fetchAsyncAnime.fulfilled, (state, { payload }) => {
          return { ...state, selectedAnime: payload };
+      });
+
+      builder.addCase(fetchAsyncManga.fulfilled, (state, { payload }) => {
+         return { ...state, selectedManga: payload };
       });
 
       builder.addCase(fetchAsyncTopManga.fulfilled, (state, { payload }) => {
@@ -139,6 +177,13 @@ const animeSlice = createSlice({
          }
       );
 
+      builder.addCase(
+         fetchAsyncRecommendedManga.fulfilled,
+         (state, { payload }) => {
+            return { ...state, recommendedManga: payload };
+         }
+      );
+
       builder.addCase(fetchAsyncTopPeople.fulfilled, (state, { payload }) => {
          return { ...state, topPeople: payload };
       });
@@ -146,16 +191,23 @@ const animeSlice = createSlice({
       builder.addCase(fetchAsycnSearchAnime.fulfilled, (state, { payload }) => {
          return { ...state, searchAnime: payload };
       });
+
+      builder.addCase(fetchAsycnSearchManga.fulfilled, (state, { payload }) => {
+         return { ...state, searchManga: payload };
+      });
    },
 });
 
-export const { removeSelectedAnime, removeState } = animeSlice.actions;
+export const { removeState } = animeSlice.actions;
 export const getAllTopAnime = state => state.anime.topAnime;
 export const getAllTopManga = state => state.anime.topManga;
 export const getAllTopCharacters = state => state.anime.topCharacters;
 export const getAllTopPeople = state => state.anime.topPeople;
 export const getSearchAnime = state => state.anime.searchAnime;
+export const getSearchManga = state => state.anime.searchManga;
 export const selectedAnime = state => state.anime.selectedAnime;
+export const selectedManga = state => state.anime.selectedManga;
 export const season = state => state.anime.season;
 export const recommendedAnime = state => state.anime.recommendedAnime;
+export const recommendedManga = state => state.anime.recommendedManga;
 export default animeSlice.reducer;

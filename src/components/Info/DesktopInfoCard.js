@@ -50,7 +50,9 @@ const DesktopInfoCard = ({ data }) => {
                               <div className="w-[63px] h-[63px] inline-flex">
                                  <div className="w-[63px] h-[63px] rounded-[50%] p-2 bg-[#081c22]">
                                     <div className="w-full h-full flex justify-center items-center text-[22px]">
-                                       {data.data.score}
+                                       {data.data.score
+                                          ? data.data.score
+                                          : data.data.scored}
                                     </div>
                                  </div>
                               </div>

@@ -4,7 +4,7 @@ import Skeleton from '../Skeleton/Skeleton';
 
 const SearchResults = ({ data, type }) => {
    return (
-      <section className="mt-8 px-5 grid grid-cols-fill-20 gap-6">
+      <section className="mt-8 px-5 grid grid-cols-fill-20 gap-3 justify-center">
          {Object.keys(data).length === 0 ? (
             Array.from(Array(25), (_, i) => <Skeleton key={i} />)
          ) : (
