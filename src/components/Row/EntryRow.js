@@ -8,7 +8,7 @@ import Skeleton from '../Skeleton/Skeleton';
 
 const EntryRow = ({ data, settings, title, type }) => {
    return (
-      <section className="mt-8 px-5">
+      <section className="mt-8">
          <h2 className="text-lg md:text-2xl font-semibold mb-[20px] whitespace-nowrap">
             {title}
          </h2>

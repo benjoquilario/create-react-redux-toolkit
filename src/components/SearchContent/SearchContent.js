@@ -1,11 +1,10 @@
 import React from 'react';
-import bg from '../../assets/images/bg.webp';
 
 const SearchContent = ({ children }) => {
    return (
       <section
          style={{
-            backgroundImage: `linear-gradient(to right, rgba(10, 31, 73, 0.8) 0%, rgba(10, 31, 73, 0.8) 100%), url(${bg})`,
+            backgroundImage: `linear-gradient(to right, rgba(10, 31, 73, 0.8) 0%, rgba(10, 31, 73, 0.8) 100%), url('/images/bg.webp')`,
          }}
          className=" h-auto max-h-[360px] min-h-[300px] w-full items-center flex flex-wrap justify-center bg-no-repeat bg-[center_center] bg-cover"
       >

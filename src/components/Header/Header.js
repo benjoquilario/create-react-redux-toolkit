@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import hamburger from '../../assets/images/icon-hamburger.svg';
 import { listItem } from '../../assets';
 
 const Header = ({ openSearch, setOpenSearch }) => {
@@ -9,7 +8,7 @@ const Header = ({ openSearch, setOpenSearch }) => {
    const onClickOpen = () => setOpenMenu(!openMenu);
 
    return (
-      <header className="bg-[#0a1f49] absolute top-0 left-0 w-full p-5 z-10">
+      <header className="bg-[#0a1f49] absolute top-0 left-0 w-full p-3 md:p-5 z-10">
          <div className="w-full max-w-6xl mx-auto flex justify-between items-center md:justify-start">
             <Link to="/" className="text-lg text-white md:text-2xl">
                D-ANIME
@@ -19,7 +18,7 @@ const Header = ({ openSearch, setOpenSearch }) => {
                   onClick={onClickOpen}
                   className="flex items-center bg-transparent md:hidden"
                >
-                  <img src={hamburger} alt="D-ANIME - Home" />
+                  <img src="/images/icon-hamburger.svg" alt="D-ANIME - Home" />
                </button>
                <div
                   className={`${
@@ -42,7 +41,7 @@ const Header = ({ openSearch, setOpenSearch }) => {
                <ul>
                   <li>
                      <button
-                        className="h-[24px] w-[25px]"
+                        className="h-[18px] w-[18px] md:h-[24px] md:w-[25px]"
                         onClick={() => setOpenSearch(!openSearch)}
                      >
                         <svg

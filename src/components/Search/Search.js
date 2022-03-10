@@ -8,12 +8,12 @@ const Search = ({ onHandleSubmit, setSearchTerm, searchTerm }) => {
             <input
                type="text"
                placeholder="search"
-               className="w-full h-[46px] text-lg px-[23px] leading-[46px] rounded-[30px]"
+               className="w-full h-[38px] md:h-[46px] text-sm md:text-lg px-[23px] leading-[46px] rounded-[30px]"
                value={searchTerm}
                onChange={e => setSearchTerm(e.target.value)}
             />
             <button
-               className="bg-[#0a1f49] absolute top-0 right-[-1px] inline-flex justify-center items-center content-center h-[46px] rounded-[30px] px-[26px] py-[10px]"
+               className="bg-[#0a1f49] absolute top-0 right-[-1px] inline-flex justify-center items-center content-center h-[38px] md:h-[46px] rounded-[30px] px-[26px] py-[10px]"
                aria-label="submit form"
             >
                <svg

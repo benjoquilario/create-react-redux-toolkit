@@ -1,5 +1,4 @@
 import React from 'react';
-import bg from '../../assets/images/bg.webp';
 
 const DesktopInfoCard = ({ data }) => {
    return (
@@ -10,7 +9,7 @@ const DesktopInfoCard = ({ data }) => {
             <div
                className="py-[40px] md:py-[30px] px-[20px] md:px-[40px]"
                style={{
-                  backgroundImage: `linear-gradient(to right, rgba(10, 31, 73, 0.8) 0%, rgba(10, 31, 73, 0.8) 100%), url(${bg})`,
+                  backgroundImage: `linear-gradient(to right, rgba(10, 31, 73, 0.8) 0%, rgba(10, 31, 73, 0.8) 100%), url('/images/bg.webp')`,
                }}
             >
                <section className="h-auto flex-nowrap flex flex-col md:flex-row items-center">

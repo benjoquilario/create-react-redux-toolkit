@@ -6,8 +6,8 @@ const Card = ({ data, type }) => {
    const { images, title, rank, mal_id, name } = data.entry;
 
    return (
-      <div className="relative w-[150px] min-w-[150px] overflow-visible flex flex-wrap rounded-[6px] content-start margin-left">
-         <div className="overflow-hidden w-full rounded-[6px] h-[225px] ">
+      <div className="relative w-[112px] min-w-[112px] sm:w-[150px] sm:min-w-[150px] overflow-visible flex flex-wrap rounded-[6px] content-start margin-left">
+         <div className="overflow-hidden w-full rounded-[6px] h-[160px] sm:h-[225px]">
             <div className="relative w-full h-full hover:opacity-80 transition-opacity">
                <Link
                   to={`/${type}/${mal_id}`}
@@ -21,7 +21,7 @@ const Card = ({ data, type }) => {
                </Link>
             </div>
          </div>
-         <div className="relative w-full flex items-start whitespace-normal flex-wrap">
+         <div className="w-full flex items-start whitespace-normal flex-wrap">
             <div className="absolute top-[-33px] right-[14px] w-[38px] h-[38px] inline-block">
                <div className="inline-block w-[38px] h-[38px]">
                   <div className="relative flex items-center w-full h-full text-center">
@@ -33,7 +33,10 @@ const Card = ({ data, type }) => {
                   </div>
                </div>
             </div>
-            <h2 className="">
+            <h2
+               className="absolute bottom-[0px] left-0 w-full h-auto p-1 text-center text-white z-10 bg-top bg-repeat-x"
+               style={{ backgroundImage: "url('/images/mask.png')" }}
+            >
                <Link to={`/${type}/${mal_id}`} className="webkit-box">
                   {title ? title : name}
                </Link>

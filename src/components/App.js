@@ -9,7 +9,7 @@ function App() {
    return (
       <div className="App">
          <Router>
-            <main className="mt-[71px] overflow-x-hidden">
+            <main className="mt-[51px] md:mt-[71px] overflow-x-hidden">
                <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/anime/:id" element={<Anime />} />
