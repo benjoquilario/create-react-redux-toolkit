@@ -1,45 +1,38 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchAsycnSearchAnime } from '../../features/animes/animeSlice';
+import {
+   fetchAsycnSearchAnime,
+   removeStateSearchAnime,
+} from '../../features/animes/animeSlice';
 
 const useFetchSearch = () => {
    const [searchTerm, setSearchTerm] = useState('');
-   const [debouncedTerm, setDebouncedTerm] = useState(searchTerm);
+
    const [isSearching, setIsSearching] = useState(false);
    const [error, setError] = useState(false);
 
    const dispatch = useDispatch();
 
-   useEffect(() => {
-      const timerId = setTimeout(() => {
-         setDebouncedTerm(searchTerm);
-      }, 1000);
+   const onHandleSubmit = event => {
+      event.preventDefault();
 
-      return () => {
-         clearTimeout(timerId);
-      };
-   }, [searchTerm]);
-
-   useEffect(() => {
       const fetchData = () => {
          try {
             setError(false);
             setIsSearching(true);
 
-            dispatch(fetchAsycnSearchAnime(debouncedTerm));
+            dispatch(fetchAsycnSearchAnime(searchTerm));
          } catch (err) {
             setError(true);
             console.error(err);
          }
       };
 
-      if (!debouncedTerm) return;
+      if (!searchTerm) return;
       setIsSearching(false);
       fetchData();
-   }, [debouncedTerm, dispatch]);
 
-   const onHandleSubmit = event => {
-      event.preventDefault();
+      return () => dispatch(removeStateSearchAnime());
    };
 
    return { onHandleSubmit, setSearchTerm, searchTerm, isSearching, error };

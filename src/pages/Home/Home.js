@@ -11,7 +11,6 @@ import {
    fetchAsyncTopManga,
    fetchAsyncTopCharacter,
    fetchAsyncTopPeople,
-   removeState,
 } from '../../features/animes/animeSlice';
 import { settings } from '../../helper';
 import {
@@ -47,7 +46,6 @@ const Home = () => {
 
          return () => {
             clearTimeout(timerId);
-            dispatch(removeState());
          };
       }
 

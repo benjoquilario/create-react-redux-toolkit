@@ -8,7 +8,8 @@ import {
    fetchAsyncRecommendedManga,
    getSearchManga,
    recommendedManga,
-   removeState,
+   removeStateRecommendedManga,
+   removeStateSearchManga,
    selectedManga,
 } from '../../features/animes/animeSlice';
 import Search from '../../components/Search/Search';
@@ -35,7 +36,10 @@ const Manga = () => {
          dispatch(fetchAsyncManga(id));
          dispatch(fetchAsyncRecommendedManga(id));
 
-         return () => dispatch(removeState());
+         return () => {
+            dispatch(removeStateSearchManga());
+            dispatch(removeStateRecommendedManga());
+         };
       }
 
       return () => (isSubscribed = false);

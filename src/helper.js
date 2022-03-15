@@ -4,10 +4,9 @@ import NextArrow from './components/Arrow/NextArrow';
 const settings = {
    infinite: true,
    speed: 500,
-   slidesToShow: 7,
-   slidesToScroll: 1,
-   centerMode: true,
-   centerPadding: '60px',
+   slidesToShow: 8,
+   slidesToScroll: 8,
+
    nextArrow: <NextArrow />,
    prevArrow: <PrevArrow />,
    responsive: [
@@ -16,17 +15,15 @@ const settings = {
 
          settings: {
             slidesToShow: 6,
-            slidesToScroll: 1,
-            centerPadding: '50px',
+            slidesToScroll: 6,
          },
       },
 
       {
-         breakpoint: 819,
+         breakpoint: 900,
          settings: {
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            centerPadding: '30px',
+            slidesToShow: 5,
+            slidesToScroll: 5,
          },
       },
 
@@ -34,17 +31,14 @@ const settings = {
          breakpoint: 651,
          settings: {
             slidesToShow: 4,
-            slidesToScroll: 1,
-            centerPadding: '20px',
+            slidesToScroll: 4,
          },
       },
       {
          breakpoint: 483,
          settings: {
             slidesToShow: 3,
-            slidesToScroll: 1,
-            centerMode: true,
-            centerPadding: '10px',
+            slidesToScroll: 4,
          },
       },
    ],

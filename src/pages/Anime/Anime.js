@@ -12,7 +12,8 @@ import {
    fetchAsyncAnimeSeason,
    recommendedAnime,
    fetchAsyncRecommendedAnime,
-   removeState,
+   removeStateRecommendedAnime,
+   removeStateSelectedAnime,
 } from '../../features/animes/animeSlice';
 import useFetchSearch from '../../components/Search/useFetchSearch';
 import SearchResults from '../../components/Search/SearchResults';
@@ -42,7 +43,10 @@ const Anime = () => {
          dispatch(fetchAsyncAnimeSeason());
          dispatch(fetchAsyncRecommendedAnime(id));
 
-         return () => dispatch(removeState());
+         return () => {
+            dispatch(removeStateRecommendedAnime());
+            dispatch(removeStateSelectedAnime());
+         };
       }
 
       return () => (isSubscribed = false);

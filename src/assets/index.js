@@ -1,7 +1,7 @@
 const listItem = [
    {
       title: 'Home',
-      link: 'home',
+      link: '/',
    },
    {
       title: 'Anime',

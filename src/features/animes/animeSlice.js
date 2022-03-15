@@ -128,18 +128,23 @@ const animeSlice = createSlice({
    name: 'animes',
    initialState,
    reducers: {
-      removeState: state => {
-         state.topAnime = {};
-         state.selectedAnime = {};
-         state.selectedManga = {};
-         state.searchManga = {};
-         state.season = {};
-         state.topManga = {};
-         state.topCharacters = {};
-         state.topPeople = {};
-         state.searchAnime = {};
+      removeStateRecommendedAnime: state => {
          state.recommendedAnime = {};
+      },
+      removeStateRecommendedManga: state => {
          state.recommendedManga = {};
+      },
+      removeStateSearchAnime: state => {
+         state.searchAnime = {};
+      },
+      removeStateSearchManga: state => {
+         state.searchManga = {};
+      },
+      removeStateSelectedAnime: state => {
+         state.selectedAnime = {};
+      },
+      removeStateSelectedManga: state => {
+         state.selectedManga = {};
       },
    },
    extraReducers(builder) {
@@ -198,7 +203,14 @@ const animeSlice = createSlice({
    },
 });
 
-export const { removeState } = animeSlice.actions;
+export const {
+   removeStateRecommendedAnime,
+   removeStateRecommendedManga,
+   removeStateSearchAnime,
+   removeStateSearchManga,
+   removeStateSelectedAnime,
+   removeStateSelectedManga,
+} = animeSlice.actions;
 export const getAllTopAnime = state => state.anime.topAnime;
 export const getAllTopManga = state => state.anime.topManga;
 export const getAllTopCharacters = state => state.anime.topCharacters;

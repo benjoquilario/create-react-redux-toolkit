@@ -8,6 +8,11 @@ const Info = ({ data }) => {
 
    useEffect(() => {
       window.addEventListener('resize', () => setInnerWidth(window.innerWidth));
+
+      return () =>
+         window.removeEventListener('resize', () =>
+            setInnerWidth(window.innerWidth)
+         );
    });
    return (
       <section className="flex flex-wrap justify-center items-start content-start w-full">

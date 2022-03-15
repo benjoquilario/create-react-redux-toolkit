@@ -6,7 +6,7 @@ const Card = ({ data, type }) => {
    const { images, title, rank, mal_id, name } = data;
 
    return (
-      <div className="relative w-[112px] min-w-[112px] sm:w-[150px] sm:min-w-[150px] overflow-visible flex flex-wrap rounded-[6px] content-start margin-left">
+      <div className="relative w-[112px] min-w-[112px] sm:w-[150px] sm:min-w-[150px] overflow-visible flex flex-wrap rounded-[6px] content-start mx-auto">
          <div className="relative overflow-hidden w-full rounded-[6px] h-[160px] sm:h-[225px] ">
             <div className="relative w-full h-full hover:opacity-80 transition-opacity">
                <Link
